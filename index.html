@@ -5,66 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>山伴 - 花錢找人一起爬山的平台</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body class="bg-gray-50 font-sans">
+  <body>
     <!-- 導航欄 -->
-    <nav class="bg-green-800 text-white shadow-lg">
+    <nav class="navbar">
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center">
-          <h1 class="text-2xl font-bold">山伴</h1>
-          <span class="ml-2 text-green-200 text-sm">找人一起爬山的最佳選擇</span>
+          <h1 class="text-2xl font-bold text-primary">山伴</h1>
+          <span class="ml-2 text-primary-light text-sm hidden md:inline-block">找人一起爬山的首選</span>
         </div>
         <div class="hidden md:flex space-x-6">
-          <a href="#" class="hover:text-green-200">首頁</a>
-          <a href="pages/companions.html" class="hover:text-green-200">找夥伴</a>
-          <a href="pages/create-request.html" class="hover:text-green-200">發布需求</a>
-          <a href="#about" class="hover:text-green-200">關於我們</a>
+          <a href="#" class="nav-link active">首頁</a>
+          <a href="pages/companions.html" class="nav-link">找夥伴</a>
+          <a href="pages/create-request.html" class="nav-link">發布需求</a>
+          <a href="#about" class="nav-link">關於我們</a>
         </div>
         <div class="flex space-x-3">
-          <a href="pages/login.html" class="px-4 py-2 rounded bg-green-700 hover:bg-green-600">登入</a>
-          <a href="pages/register.html" class="px-4 py-2 rounded bg-green-600 hover:bg-green-500">註冊</a>
+          <a href="pages/login.html" class="btn-secondary">登入</a>
+          <a href="pages/register.html" class="btn-primary">註冊</a>
         </div>
-        <button class="md:hidden focus:outline-none">
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none text-primary">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
       </div>
+      <!-- 移動端選單 -->
+      <div id="mobile-menu" class="mobile-menu-open hidden">
+        <div class="py-3 space-y-3">
+          <a href="#" class="block px-4 py-2 nav-link active">首頁</a>
+          <a href="pages/companions.html" class="block px-4 py-2 nav-link">找夥伴</a>
+          <a href="pages/create-request.html" class="block px-4 py-2 nav-link">發布需求</a>
+          <a href="#about" class="block px-4 py-2 nav-link">關於我們</a>
+          <div class="border-t border-gray-200 mt-3 pt-3 px-4 flex flex-col space-y-2">
+            <a href="pages/login.html" class="btn-secondary w-full">登入</a>
+            <a href="pages/register.html" class="btn-primary w-full">註冊</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- 英雄區塊 -->
-    <section class="relative">
-      <div
-        class="bg-cover bg-center h-96"
-        style="background-image: url('https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"
-      >
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="relative container mx-auto px-4 h-full flex flex-col justify-center items-start">
-          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">找人一起爬山，<br />從未如此簡單</h2>
-          <p class="text-xl text-white mb-8 max-w-xl">無論你是尋找專業嚮導、經驗豐富的夥伴，還是想認識志同道合的朋友，山伴都能幫你找到完美的登山搭檔。</p>
-          <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-            <a href="pages/companions.html" class="px-6 py-3 rounded-lg bg-green-600 text-white font-medium text-lg hover:bg-green-500 transition duration-300"
-              >找尋夥伴</a
-            >
-            <a
-              href="pages/create-request.html"
-              class="px-6 py-3 rounded-lg bg-white text-green-800 font-medium text-lg hover:bg-gray-100 transition duration-300"
-              >發布需求</a
-            >
+    <section class="hero">
+      <div class="hero-background">
+        <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="登山背景" />
+      </div>
+      <div class="container mx-auto px-4">
+        <div class="hero-content">
+          <h1>找人一起爬山<br />從未如此簡單</h1>
+          <p class="hero-subtitle">無論你是尋找專業嚮導、經驗豐富的夥伴，還是想認識志同道合的朋友，山伴都能幫你找到完美的登山搭檔。</p>
+          <div class="hero-buttons">
+            <a href="pages/companions.html" class="btn-primary">尋找夥伴</a>
+            <a href="pages/create-request.html" class="btn-secondary">發布需求</a>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 特色區塊 -->
-    <section class="py-16 bg-white">
+    <section class="features">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">為什麼選擇山伴？</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-            <div class="text-green-600 text-4xl mb-4">
-              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <h2 class="section-title">為什麼選擇山伴？</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -73,12 +85,12 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">安全可靠</h3>
-            <p class="text-gray-600">所有夥伴都經過身份驗證，並有完整的評價系統，讓你安心挑選。</p>
+            <h3>安全可靠</h3>
+            <p>所有夥伴都經過身份驗證，並有完整的評價系統，讓你安心挑選。</p>
           </div>
-          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-            <div class="text-green-600 text-4xl mb-4">
-              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -87,12 +99,12 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">多元夥伴</h3>
-            <p class="text-gray-600">從專業嚮導、資深登山者到活潑健談的陪伴者，總能找到合適的搭檔。</p>
+            <h3>多元夥伴</h3>
+            <p>從專業嚮導、資深登山者到活潑健談的陪伴者，總能找到合適的搭檔。</p>
           </div>
-          <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-            <div class="text-green-600 text-4xl mb-4">
-              <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -101,42 +113,42 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-semibold mb-2">明確定價</h3>
-            <p class="text-gray-600">透明的價格設定，根據自己的預算選擇適合的夥伴，不會有隱藏費用。</p>
+            <h3>明確定價</h3>
+            <p>透明的價格設定，根據自己的預算選擇適合的夥伴，不會有隱藏費用。</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 使用流程 -->
-    <section class="py-16 bg-gray-100">
+    <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">如何使用山伴</h2>
+        <h2 class="section-title">如何使用山伴</h2>
         <div class="grid md:grid-cols-4 gap-6">
           <div class="text-center">
             <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
-              <span class="text-2xl font-bold text-green-600">1</span>
+              <span class="text-2xl font-bold text-primary">1</span>
             </div>
             <h3 class="text-xl font-semibold mb-2">註冊帳號</h3>
             <p class="text-gray-600">建立個人檔案，上傳照片和介紹自己</p>
           </div>
           <div class="text-center">
             <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
-              <span class="text-2xl font-bold text-green-600">2</span>
+              <span class="text-2xl font-bold text-primary">2</span>
             </div>
             <h3 class="text-xl font-semibold mb-2">發布需求</h3>
             <p class="text-gray-600">描述你的路線、日期和預算，以及理想的夥伴類型</p>
           </div>
           <div class="text-center">
             <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
-              <span class="text-2xl font-bold text-green-600">3</span>
+              <span class="text-2xl font-bold text-primary">3</span>
             </div>
             <h3 class="text-xl font-semibold mb-2">選擇夥伴</h3>
             <p class="text-gray-600">瀏覽申請者或直接聯繫感興趣的夥伴</p>
           </div>
           <div class="text-center">
             <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-md">
-              <span class="text-2xl font-bold text-green-600">4</span>
+              <span class="text-2xl font-bold text-primary">4</span>
             </div>
             <h3 class="text-xl font-semibold mb-2">一起爬山</h3>
             <p class="text-gray-600">確認細節後，享受有人陪伴的登山樂趣</p>
@@ -146,44 +158,68 @@
     </section>
 
     <!-- 夥伴類型 -->
-    <section class="py-16 bg-white">
+    <section class="companions-showcase">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">你可以找到的夥伴</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
-            <img
-              src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="專業嚮導"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">專業嚮導</h3>
-              <p class="text-gray-600 mb-4">擁有豐富經驗和專業證照，能帶領你安全攀登各種難度的山脈。</p>
-              <a href="#" class="text-green-600 hover:text-green-500">探索更多 →</a>
+        <h2 class="section-title">你可以找到的夥伴</h2>
+        <div class="companions-slider">
+          <div class="companion-type-card">
+            <div class="image-container">
+              <img
+                src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="專業嚮導"
+                class="img-zoom"
+              />
+              <div class="badge primary">專業嚮導</div>
+            </div>
+            <div class="card-content">
+              <h3>專業嚮導</h3>
+              <p>擁有豐富經驗和專業證照，能帶領你安全攀登各種難度的山脈。</p>
+              <a href="pages/companions.html?type=guide" class="text-link">探索更多 →</a>
             </div>
           </div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
-            <img
-              src="https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="資深登山者"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">資深登山者</h3>
-              <p class="text-gray-600 mb-4">熟悉各種登山路線，能分享專業知識和技巧，提高你的登山體驗。</p>
-              <a href="#" class="text-green-600 hover:text-green-500">探索更多 →</a>
+          <div class="companion-type-card">
+            <div class="image-container">
+              <img
+                src="https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="資深登山者"
+                class="img-zoom"
+              />
+              <div class="badge purple">資深登山者</div>
+            </div>
+            <div class="card-content">
+              <h3>資深登山者</h3>
+              <p>熟悉各種登山路線，能分享專業知識和技巧，提高你的登山體驗。</p>
+              <a href="pages/companions.html?type=experienced" class="text-link">探索更多 →</a>
             </div>
           </div>
-          <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md">
-            <img
-              src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-              alt="休閒陪伴"
-              class="w-full h-48 object-cover"
-            />
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2">休閒陪伴</h3>
-              <p class="text-gray-600 mb-4">活潑健談，擅長拍照，讓你的登山之旅充滿歡樂和美好回憶。</p>
-              <a href="#" class="text-green-600 hover:text-green-500">探索更多 →</a>
+          <div class="companion-type-card">
+            <div class="image-container">
+              <img
+                src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="休閒陪伴"
+                class="img-zoom"
+              />
+              <div class="badge orange">休閒陪伴</div>
+            </div>
+            <div class="card-content">
+              <h3>休閒陪伴</h3>
+              <p>活潑健談，擅長拍照，讓你的登山之旅充滿歡樂和美好回憶。</p>
+              <a href="pages/companions.html?type=casual" class="text-link">探索更多 →</a>
+            </div>
+          </div>
+          <div class="companion-type-card">
+            <div class="image-container">
+              <img
+                src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                alt="攝影達人"
+                class="img-zoom"
+              />
+              <div class="badge purple">攝影達人</div>
+            </div>
+            <div class="card-content">
+              <h3>攝影達人</h3>
+              <p>善於捕捉自然風光和人像，為你的登山之旅留下精彩瞬間。</p>
+              <a href="pages/companions.html?type=photographer" class="text-link">探索更多 →</a>
             </div>
           </div>
         </div>
@@ -191,52 +227,39 @@
     </section>
 
     <!-- 用戶故事 -->
-    <section class="py-16 bg-gray-100">
+    <section class="testimonials">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">用戶分享</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="用戶頭像" class="w-12 h-12 rounded-full mr-4" />
-              <div>
-                <h3 class="font-semibold">陳先生，38歲</h3>
-                <p class="text-gray-600 text-sm">台北市</p>
-              </div>
-            </div>
-            <p class="text-gray-700 italic">
+        <h2 class="section-title">用戶分享</h2>
+        <div class="testimonials-carousel">
+          <div class="testimonial-card">
+            <div class="testimonial-quote">
               "作為一個登山新手，我很擔心獨自爬山的安全問題。通過山伴，我找到了一位專業嚮導，不僅帶我安全完成了玉山之旅，還學到了很多登山知識。非常推薦！"
-            </p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-md">
-            <div class="flex items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="用戶頭像" class="w-12 h-12 rounded-full mr-4" />
+            </div>
+            <div class="testimonial-user">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="用戶頭像" class="avatar" />
               <div>
-                <h3 class="font-semibold">林小姐，26歲</h3>
-                <p class="text-gray-600 text-sm">高雄市</p>
+                <h4 class="font-semibold">陳先生，38歲</h4>
+                <p class="text-small text-gray-600">台北市</p>
               </div>
             </div>
-            <p class="text-gray-700 italic">
-              "我喜歡爬山，但朋友們總是沒時間陪我。在山伴上，我找到了志同道合的夥伴，現在每個週末都有人一起探索不同的山徑，還認識了不少新朋友。"
-            </p>
+          </div>
+          <div class="carousel-indicators">
+            <div class="carousel-indicator active"></div>
+            <div class="carousel-indicator"></div>
+            <div class="carousel-indicator"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 行動召喚 -->
-    <section class="py-16 bg-green-800 text-white">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">準備好找尋你的山伴了嗎？</h2>
-        <p class="text-xl mb-8 max-w-2xl mx-auto">無論是為了安全、學習還是社交，山伴都能幫你找到最適合的爬山夥伴。立即加入我們，開啟精彩的登山之旅！</p>
-        <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-          <a href="pages/register.html" class="px-6 py-3 rounded-lg bg-white text-green-800 font-medium text-lg hover:bg-gray-100 transition duration-300"
-            >立即註冊</a
-          >
-          <a
-            href="pages/companions.html"
-            class="px-6 py-3 rounded-lg bg-green-700 text-white font-medium text-lg hover:bg-green-600 border border-green-600 transition duration-300"
-            >瀏覽夥伴</a
-          >
+    <section class="cta">
+      <div class="container mx-auto px-4">
+        <h2>準備好找尋你的山伴了嗎？</h2>
+        <p>無論是為了安全、學習還是社交，山伴都能幫你找到最適合的爬山夥伴。立即加入我們，開啟精彩的登山之旅！</p>
+        <div class="cta-buttons">
+          <a href="pages/register.html" class="btn-accent">立即註冊</a>
+          <a href="pages/companions.html" class="btn-secondary">瀏覽夥伴</a>
         </div>
       </div>
     </section>
@@ -322,6 +345,37 @@
       </div>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script>
+      // 滾動時導航欄背景變化
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // 移動端選單切換
+      const menuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuButton.addEventListener("click", function () {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // 輪播功能
+      const indicators = document.querySelectorAll(".carousel-indicator");
+      // 這裡只是示例，實際會需要配合顯示相應的輪播內容
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+          // 清除所有選中狀態
+          indicators.forEach(ind => ind.classList.remove("active"));
+          // 設置當前選中
+          indicator.classList.add("active");
+          // 這裡可以添加顯示相應輪播內容的代碼
+        });
+      });
+    </script>
   </body>
 </html>
