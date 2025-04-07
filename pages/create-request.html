@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>發布需求 - 山伴</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-md py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold text-primary">山伴</a>
+
+        <!-- 桌面導航選項 -->
+        <div class="hidden md:flex space-x-6">
+          <a href="../index.html" class="nav-link">首頁</a>
+          <a href="companions.html" class="nav-link">找夥伴</a>
+          <a href="create-request.html" class="nav-link active">發布需求</a>
+          <a href="about.html" class="nav-link">關於我們</a>
+        </div>
+
+        <!-- 登入/註冊按鈕 -->
+        <div class="hidden md:flex space-x-4">
+          <a href="login.html" class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary hover:text-white transition">登入</a>
+          <a href="register.html" class="px-4 py-2 rounded bg-primary text-white hover:bg-primary-dark transition">註冊</a>
+        </div>
+
+        <!-- 移動設備選單按鈕 -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-500 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 移動設備選單 -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md absolute left-0 right-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+          <a href="../index.html" class="nav-link">首頁</a>
+          <a href="companions.html" class="nav-link">找夥伴</a>
+          <a href="create-request.html" class="nav-link active">發布需求</a>
+          <a href="about.html" class="nav-link">關於我們</a>
+          <div class="pt-3 border-t border-gray-200 flex space-x-4">
+            <a href="login.html" class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary hover:text-white transition">登入</a>
+            <a href="register.html" class="px-4 py-2 rounded bg-primary text-white hover:bg-primary-dark transition">註冊</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 頁面內容 -->
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-center mb-8">發布爬山需求</h1>
+
+      <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-md p-8">
+        <form id="request-form" class="space-y-6">
+          <!-- 路線資訊 -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4 text-primary">路線資訊</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="route-name" class="block text-gray-700 mb-2">路線名稱/目的地</label>
+                <input
+                  type="text"
+                  id="route-name"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="例如：玉山主峰、合歡山..."
+                  required
+                />
+              </div>
+              <div class="md:col-span-1">
+                <label for="location" class="block text-gray-700 mb-2">地區</label>
+                <select id="location" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required>
+                  <option value="" disabled selected>請選擇地區</option>
+                  <option value="北部">北部山區</option>
+                  <option value="中部">中部山區</option>
+                  <option value="南部">南部山區</option>
+                  <option value="東部">東部山區</option>
+                  <option value="離島">離島</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 時間規劃 -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4 text-primary">時間規劃</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="start-date" class="block text-gray-700 mb-2">出發日期</label>
+                <input
+                  type="date"
+                  id="start-date"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
+              <div>
+                <label for="end-date" class="block text-gray-700 mb-2">結束日期</label>
+                <input
+                  type="date"
+                  id="end-date"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
+              <div>
+                <label for="start-time" class="block text-gray-700 mb-2">出發時間</label>
+                <input
+                  type="time"
+                  id="start-time"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  required
+                />
+              </div>
+              <div>
+                <label for="duration" class="block text-gray-700 mb-2">預計持續時間</label>
+                <div class="flex items-center">
+                  <input
+                    type="number"
+                    id="duration"
+                    min="1"
+                    max="30"
+                    class="w-full border border-gray-300 rounded-l px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  />
+                  <span class="bg-gray-100 border border-gray-300 border-l-0 rounded-r px-3 py-2 text-gray-700">天</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 需求描述 -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4 text-primary">需求描述</h2>
+            <div class="space-y-4">
+              <div>
+                <label for="description" class="block text-gray-700 mb-2">詳細描述</label>
+                <textarea
+                  id="description"
+                  rows="4"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="請描述此次爬山的目的、需求和期望..."
+                  required
+                ></textarea>
+              </div>
+              <div>
+                <label for="skill-level" class="block text-gray-700 mb-2">需要的經驗水平</label>
+                <select id="skill-level" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" required>
+                  <option value="" disabled selected>請選擇經驗水平</option>
+                  <option value="新手">新手即可</option>
+                  <option value="中級">有基本經驗</option>
+                  <option value="進階">進階經驗</option>
+                  <option value="專業">需要專業嚮導</option>
+                </select>
+              </div>
+              <div>
+                <label for="group-size" class="block text-gray-700 mb-2">預期人數</label>
+                <input
+                  type="number"
+                  id="group-size"
+                  min="1"
+                  max="20"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="包含您在內的總人數"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- 預算範圍 -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4 text-primary">預算範圍</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="budget-min" class="block text-gray-700 mb-2">最低預算 (每人/日)</label>
+                <div class="flex items-center">
+                  <span class="bg-gray-100 border border-gray-300 border-r-0 rounded-l px-3 py-2 text-gray-700">NT$</span>
+                  <input
+                    type="number"
+                    id="budget-min"
+                    min="500"
+                    step="100"
+                    class="w-full border border-gray-300 rounded-r px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="budget-max" class="block text-gray-700 mb-2">最高預算 (每人/日)</label>
+                <div class="flex items-center">
+                  <span class="bg-gray-100 border border-gray-300 border-r-0 rounded-l px-3 py-2 text-gray-700">NT$</span>
+                  <input
+                    type="number"
+                    id="budget-max"
+                    min="500"
+                    step="100"
+                    class="w-full border border-gray-300 rounded-r px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 夥伴偏好 -->
+          <div>
+            <h2 class="text-xl font-semibold mb-4 text-primary">夥伴偏好 (選填)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label for="age-range" class="block text-gray-700 mb-2">年齡範圍</label>
+                <select id="age-range" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value="">不限</option>
+                  <option value="18-25">18-25歲</option>
+                  <option value="26-35">26-35歲</option>
+                  <option value="36-45">36-45歲</option>
+                  <option value="46+">46歲以上</option>
+                </select>
+              </div>
+              <div>
+                <label for="gender-preference" class="block text-gray-700 mb-2">性別偏好</label>
+                <select id="gender-preference" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+                  <option value="">不限</option>
+                  <option value="male">男性</option>
+                  <option value="female">女性</option>
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label for="special-requirements" class="block text-gray-700 mb-2">特殊要求或偏好</label>
+                <textarea
+                  id="special-requirements"
+                  rows="3"
+                  class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="例如：希望夥伴擅長攝影、熟悉特定路線、會急救等..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- 提交按鈕 -->
+          <div class="pt-6 border-t border-gray-200">
+            <button type="submit" class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-primary-dark transition btn-hover-effect">
+              發布需求
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">山伴</h3>
+            <p class="text-gray-300">連接熱愛登山的人們，讓每一次登山都有最佳體驗。</p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">快速連結</h4>
+            <ul class="space-y-2">
+              <li><a href="../index.html" class="text-gray-300 hover:text-white">首頁</a></li>
+              <li><a href="companions.html" class="text-gray-300 hover:text-white">找夥伴</a></li>
+              <li><a href="create-request.html" class="text-gray-300 hover:text-white">發布需求</a></li>
+              <li><a href="about.html" class="text-gray-300 hover:text-white">關於我們</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">資源</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-300 hover:text-white">登山安全指南</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white">裝備清單</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white">常見問題</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white">使用條款</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">聯絡我們</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                info@shanban.com
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+                (02) 1234-5678
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-300">
+          <p>&copy; 2023 山伴. 保留所有權利.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script>
+      // 初始化頁面
+      document.addEventListener("DOMContentLoaded", () => {
+        // 移動選單切換
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+          });
+        }
+
+        // 表單提交處理
+        const requestForm = document.getElementById("request-form");
+        if (requestForm) {
+          requestForm.addEventListener("submit", e => {
+            e.preventDefault();
+
+            // 獲取表單數據
+            const routeName = document.getElementById("route-name").value;
+            const location = document.getElementById("location").value;
+            const startDate = document.getElementById("start-date").value;
+            const endDate = document.getElementById("end-date").value;
+            const startTime = document.getElementById("start-time").value;
+            const duration = document.getElementById("duration").value;
+            const description = document.getElementById("description").value;
+            const skillLevel = document.getElementById("skill-level").value;
+            const groupSize = document.getElementById("group-size").value;
+            const budgetMin = document.getElementById("budget-min").value;
+            const budgetMax = document.getElementById("budget-max").value;
+            const ageRange = document.getElementById("age-range").value;
+            const genderPreference = document.getElementById("gender-preference").value;
+            const specialRequirements = document.getElementById("special-requirements").value;
+
+            // 建立需求資料物件
+            const requestData = {
+              routeName,
+              location,
+              startDate,
+              endDate,
+              startTime,
+              duration,
+              description,
+              skillLevel,
+              groupSize,
+              budget: {
+                min: budgetMin,
+                max: budgetMax,
+              },
+              preferences: {
+                ageRange,
+                gender: genderPreference,
+                specialRequirements,
+              },
+              createdAt: new Date().toISOString(),
+              status: "open",
+            };
+
+            // 在實際應用中，這裡應該將資料發送到服務器
+            console.log("需求資料:", requestData);
+
+            // 模擬成功提交
+            alert("需求已成功發布！在實際應用中，您的需求會顯示在需求列表中，供夥伴瀏覽。");
+
+            // 重置表單或重定向到需求列表頁面
+            requestForm.reset();
+          });
+        }
+
+        // 設定日期最小值為今天
+        const today = new Date().toISOString().split("T")[0];
+        const startDateInput = document.getElementById("start-date");
+        const endDateInput = document.getElementById("end-date");
+
+        if (startDateInput && endDateInput) {
+          startDateInput.min = today;
+
+          // 當開始日期變更時，更新結束日期的最小值
+          startDateInput.addEventListener("change", () => {
+            endDateInput.min = startDateInput.value;
+
+            // 如果結束日期早於開始日期，則更新結束日期
+            if (endDateInput.value && endDateInput.value < startDateInput.value) {
+              endDateInput.value = startDateInput.value;
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

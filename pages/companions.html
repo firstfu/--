@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>尋找夥伴 - 山伴</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- 導航欄 -->
+    <nav class="bg-white shadow-md py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="../index.html" class="text-2xl font-bold text-primary">山伴</a>
+
+        <!-- 桌面導航選項 -->
+        <div class="hidden md:flex space-x-6">
+          <a href="../index.html" class="nav-link">首頁</a>
+          <a href="companions.html" class="nav-link active">找夥伴</a>
+          <a href="create-request.html" class="nav-link">發布需求</a>
+          <a href="about.html" class="nav-link">關於我們</a>
+        </div>
+
+        <!-- 登入/註冊按鈕 -->
+        <div class="hidden md:flex space-x-4">
+          <a href="login.html" class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary hover:text-white transition">登入</a>
+          <a href="register.html" class="px-4 py-2 rounded bg-primary text-white hover:bg-primary-dark transition">註冊</a>
+        </div>
+
+        <!-- 移動設備選單按鈕 -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-500 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 移動設備選單 -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md absolute left-0 right-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+          <a href="../index.html" class="nav-link">首頁</a>
+          <a href="companions.html" class="nav-link active">找夥伴</a>
+          <a href="create-request.html" class="nav-link">發布需求</a>
+          <a href="about.html" class="nav-link">關於我們</a>
+          <div class="pt-3 border-t border-gray-200 flex space-x-4">
+            <a href="login.html" class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary hover:text-white transition">登入</a>
+            <a href="register.html" class="px-4 py-2 rounded bg-primary text-white hover:bg-primary-dark transition">註冊</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 頁面內容 -->
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-3xl font-bold text-center mb-8">尋找登山夥伴</h1>
+
+      <!-- 搜尋和篩選區域 -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <form id="filter-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label for="location" class="block text-gray-700 mb-2">登山地點</label>
+            <select id="location" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="">所有地點</option>
+              <option value="北部">北部山區</option>
+              <option value="中部">中部山區</option>
+              <option value="南部">南部山區</option>
+              <option value="東部">東部山區</option>
+              <option value="離島">離島</option>
+            </select>
+          </div>
+          <div>
+            <label for="experience" class="block text-gray-700 mb-2">經驗程度</label>
+            <select id="experience" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="">所有程度</option>
+              <option value="新手">新手</option>
+              <option value="中級">中級</option>
+              <option value="進階">進階</option>
+              <option value="專業">專業嚮導</option>
+            </select>
+          </div>
+          <div>
+            <label for="date" class="block text-gray-700 mb-2">可用日期</label>
+            <input type="date" id="date" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+          <div class="md:col-span-3 flex justify-end">
+            <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-primary-dark transition">搜尋夥伴</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- 夥伴列表區域 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="companions-list">
+        <!-- 夥伴卡片 1 -->
+        <a
+          href="companion-detail.html?id=1"
+          class="block bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="登山夥伴照片"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute top-2 right-2 bg-green-500 text-white text-sm font-semibold px-2 py-1 rounded">專業嚮導</div>
+          </div>
+          <div class="p-5">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-lg font-bold">林志明</h3>
+              <div class="flex items-center">
+                <span class="text-yellow-500">★★★★★</span>
+                <span class="text-gray-700 ml-1">5.0</span>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <p class="flex items-center text-gray-600"><span class="mr-2">🧭</span> 專長：北部山區、高海拔路線</p>
+              <p class="flex items-center text-gray-600"><span class="mr-2">💰</span> 費用：NT$2,500/日</p>
+            </div>
+            <div class="block w-full text-center bg-primary text-white py-2 rounded hover:bg-primary-dark transition">查看詳情</div>
+          </div>
+        </a>
+
+        <!-- 夥伴卡片 2 -->
+        <a
+          href="companion-detail.html?id=2"
+          class="block bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="登山夥伴照片"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute top-2 right-2 bg-secondary text-white text-sm font-semibold px-2 py-1 rounded">進階愛好者</div>
+          </div>
+          <div class="p-5">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-lg font-bold">陳美玲</h3>
+              <div class="flex items-center">
+                <span class="text-yellow-500">★★★★☆</span>
+                <span class="text-gray-700 ml-1">4.8</span>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <p class="flex items-center text-gray-600"><span class="mr-2">🧭</span> 專長：中級山、健行步道</p>
+              <p class="flex items-center text-gray-600"><span class="mr-2">💰</span> 費用：NT$1,800/日</p>
+            </div>
+            <div class="block w-full text-center bg-primary text-white py-2 rounded hover:bg-primary-dark transition">查看詳情</div>
+          </div>
+        </a>
+
+        <!-- 夥伴卡片 3 -->
+        <a
+          href="companion-detail.html?id=3"
+          class="block bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 hover:shadow-lg cursor-pointer"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="登山夥伴照片"
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute top-2 right-2 bg-indigo-500 text-white text-sm font-semibold px-2 py-1 rounded">風趣伙伴</div>
+          </div>
+          <div class="p-5">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-lg font-bold">王小明</h3>
+              <div class="flex items-center">
+                <span class="text-yellow-500">★★★★☆</span>
+                <span class="text-gray-700 ml-1">4.5</span>
+              </div>
+            </div>
+            <div class="space-y-2 mb-4">
+              <p class="flex items-center text-gray-600"><span class="mr-2">🧭</span> 專長：郊山步道、市郊健行</p>
+              <p class="flex items-center text-gray-600"><span class="mr-2">💰</span> 費用：NT$1,200/日</p>
+            </div>
+            <div class="block w-full text-center bg-primary text-white py-2 rounded hover:bg-primary-dark transition">查看詳情</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 載入更多按鈕 -->
+      <div class="text-center mt-8">
+        <button id="load-more" class="px-8 py-3 bg-white border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition">
+          載入更多夥伴
+        </button>
+      </div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">山伴</h3>
+            <p class="text-gray-300">連接熱愛登山的人們，讓每一次登山都有最佳體驗。</p>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">快速連結</h4>
+            <ul class="space-y-2">
+              <li><a href="../index.html" class="text-gray-300 hover:text-white">首頁</a></li>
+              <li><a href="companions.html" class="text-gray-300 hover:text-white">找夥伴</a></li>
+              <li><a href="create-request.html" class="text-gray-300 hover:text-white">發布需求</a></li>
+              <li><a href="about.html" class="text-gray-300 hover:text-white">關於我們</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">資源</h4>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-300 hover:text-white">登山安全指南</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white">裝備清單</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white">常見問題</a></li>
+              <li><a href="#" class="text-gray-300 hover:text-white">使用條款</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-bold mb-4">聯絡我們</h4>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                info@shanban.com
+              </li>
+              <li class="flex items-center">
+                <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  ></path>
+                </svg>
+                (02) 1234-5678
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-300">
+          <p>&copy; 2023 山伴. 保留所有權利.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script>
+      // 初始化頁面
+      document.addEventListener("DOMContentLoaded", () => {
+        // 篩選表單提交事件
+        const filterForm = document.getElementById("filter-form");
+        if (filterForm) {
+          filterForm.addEventListener("submit", e => {
+            e.preventDefault();
+
+            // 獲取篩選條件
+            const location = document.getElementById("location").value;
+            const experience = document.getElementById("experience").value;
+            const date = document.getElementById("date").value;
+
+            // 在實際應用中，這裡應該發送AJAX請求到後端API
+            console.log("篩選條件:", { location, experience, date });
+
+            // 模擬篩選操作
+            alert("篩選條件已套用！在實際應用中，這會根據您的條件顯示符合的夥伴。");
+          });
+        }
+
+        // 載入更多按鈕點擊事件
+        const loadMoreBtn = document.getElementById("load-more");
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener("click", () => {
+            // 模擬載入更多操作
+            // 在實際應用中，這裡應該發送AJAX請求到後端API，獲取更多夥伴資料
+
+            // 顯示載入中狀態
+            loadMoreBtn.textContent = "載入中...";
+
+            // 模擬延遲
+            setTimeout(() => {
+              // 恢復按鈕狀態
+              loadMoreBtn.textContent = "載入更多夥伴";
+
+              // 模擬沒有更多數據的情況
+              alert("已顯示所有夥伴！在實際應用中，這裡會顯示更多的夥伴卡片。");
+            }, 1500);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
